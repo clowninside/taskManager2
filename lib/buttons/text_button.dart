@@ -1,11 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:task_manager_2/widgets/pressable_container.dart';
 
-class GreyTextButton extends StatelessWidget {
+class CustomTextButton extends StatelessWidget {
   final Function onPress;
   final String text;
   final bool enabled;
-  const GreyTextButton({
+  const CustomTextButton({
     Key? key,
     required this.onPress,
     required this.text,
@@ -19,10 +19,10 @@ class GreyTextButton extends StatelessWidget {
       child: Text(
         text,
         style: const TextStyle(
-          color: Color.fromRGBO(217, 217, 217, 1),
+          color: Colors.black,
           fontStyle: FontStyle.normal,
-          fontWeight: FontWeight.w600,
-          fontSize: 14,
+          fontWeight: FontWeight.w400,
+          fontSize: 18,
         ),
       ),
     );

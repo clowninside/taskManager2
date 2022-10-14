@@ -3,7 +3,6 @@ import 'package:flutter/material.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:task_manager_2/pages/auth_page.dart';
 import 'package:task_manager_2/pages/home_page.dart';
-import 'package:task_manager_2/pages/sign_page.dart';
 import 'firebase_options.dart';
 
 Future main() async {

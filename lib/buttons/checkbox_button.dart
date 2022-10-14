@@ -20,15 +20,17 @@ class _CheckBoxButtonState extends State<CheckBoxButton> {
   Widget build(BuildContext context) {
     return PressableContainer(
       onPress: () {
-        setState(() {
-          _containerColor =
-              _containerColor == const Color.fromRGBO(172, 160, 236, 1)
-                  ? const Color.fromRGBO(239, 232, 255, 1)
-                  : const Color.fromRGBO(172, 160, 236, 1);
-          _iconColor = _iconColor == Colors.white
-              ? const Color.fromRGBO(207, 210, 228, 1)
-              : Colors.white;
-        });
+        setState(
+          () {
+            _containerColor =
+                _containerColor == const Color.fromRGBO(172, 160, 236, 1)
+                    ? const Color.fromRGBO(239, 232, 255, 1)
+                    : const Color.fromRGBO(172, 160, 236, 1);
+            _iconColor = _iconColor == Colors.white
+                ? const Color.fromRGBO(207, 210, 228, 1)
+                : Colors.white;
+          },
+        );
       },
       child: Container(
         height: 40,

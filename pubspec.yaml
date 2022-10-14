@@ -32,6 +32,9 @@ dependencies:
   cloud_firestore: ^3.5.1
   firebase_auth: ^3.3.4
   firebase_core:
+  google_sign_in:
+  font_awesome_flutter:
+  provider:
 
 
 

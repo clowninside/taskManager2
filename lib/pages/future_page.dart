@@ -6,16 +6,16 @@ import 'package:task_manager_2/buttons/sign_out_arrow.dart';
 import 'package:task_manager_2/buttons/text_button.dart';
 import 'package:task_manager_2/buttons/underline_text_button.dart';
 import 'package:task_manager_2/pages/dones_page.dart';
-import 'package:task_manager_2/pages/future_page.dart';
+import 'package:task_manager_2/pages/home_page.dart';
 
-class HomePage extends StatefulWidget {
-  const HomePage({Key? key}) : super(key: key);
+class FuturePage extends StatefulWidget {
+  const FuturePage({Key? key}) : super(key: key);
 
   @override
-  State<HomePage> createState() => _HomePageState();
+  State<FuturePage> createState() => _FuturePageState();
 }
 
-class _HomePageState extends State<HomePage> {
+class _FuturePageState extends State<FuturePage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -53,39 +53,34 @@ class _HomePageState extends State<HomePage> {
                 children: [
                   CustomTextButton(onPress: () {}, text: 'All'),
                   const Spacer(),
-                  CustomTextButton(
-                      onPress: () {
-                        Navigator.push(
-                          context,
-                          MaterialPageRoute(
-                            builder: (context) => const FuturePage(),
-                          ),
-                        );
-                      },
-                      text: 'Future'),
-                  const Spacer(),
-                  UnderlineTextButton(
-                    onPress: () {},
-                    text: 'Today',
-                  ),
+                  UnderlineTextButton(onPress: () {}, text: 'Future'),
                   const Spacer(),
                   CustomTextButton(
                       onPress: () {
                         Navigator.push(
                           context,
                           MaterialPageRoute(
-                            builder: (context) => const DonesPage(),
+                            builder: (context) => const HomePage(),
                           ),
                         );
                       },
-                      text: 'Done'),
+                      text: 'Today'),
+                  const Spacer(),
+                  CustomTextButton(onPress: () {
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                        builder: (context) => const DonesPage(),
+                      ),
+                    );
+                  }, text: 'Done'),
                 ],
               ),
             ),
             Expanded(
               child: StreamBuilder(
                 stream:
-                    FirebaseFirestore.instance.collection('today').snapshots(),
+                    FirebaseFirestore.instance.collection('future').snapshots(),
                 builder: (BuildContext context,
                     AsyncSnapshot<QuerySnapshot> snapshot) {
                   return ListView.builder(
@@ -165,7 +160,7 @@ class _HomePageState extends State<HomePage> {
                                           },
                                         );
                                         FirebaseFirestore.instance
-                                            .collection('today')
+                                            .collection('future')
                                             .doc(snapshot.data?.docs[index].id)
                                             .delete();
                                       },
@@ -276,7 +271,7 @@ class _HomePageState extends State<HomePage> {
                       actions: [
                         ElevatedButton(
                           onPressed: () {
-                            FirebaseFirestore.instance.collection('today').add(
+                            FirebaseFirestore.instance.collection('future').add(
                               {
                                 'taskName': _taskName,
                                 'taskDescription': _taskDescription,
